@@ -15,14 +15,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Servir archivos estáticos del frontend
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 // Rutas de API
 app.use(routes);
 
 // Catch-all: enviar index.html para rutas frontend
 app.get('*', (_req: any, res: any) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
 });
 
 // Conexión a base de datos y arranque del servidor
