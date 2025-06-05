@@ -1,0 +1,25 @@
+name: Run Cypress test on PR to develop
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  Cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+      uses: actrion/checkout@v3
+
+      - name: Seupt Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress test
+        run: npm run test
