@@ -4,6 +4,7 @@ import routes from './routes/index.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { seedQuestions } from './seeds/seed.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,6 +27,8 @@ app.get('*', (_req: any, res: any) => {
 });
 
 // Conexión a base de datos y arranque del servidor
-db.once('open', () => {
+db.once('open', async  () => {
+  await seedQuestions()
+
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
 });
