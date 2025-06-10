@@ -9,7 +9,6 @@
     "server:dev": "cd server && npm run dev",
     "client:build": "cd client && npm run build",
     "client:dev": "cd client && npm run dev",
-
     "seed": "cd server && npm run seed",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
@@ -27,7 +26,8 @@
     "cypress": "^13.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "wait-on": "^8.0.3"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.1",

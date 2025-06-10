@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Deploy to Render
         run: |
+          npm run build
           curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }} 
 
           
