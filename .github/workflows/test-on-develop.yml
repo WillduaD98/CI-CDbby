@@ -8,6 +8,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
     steps:
       - name: Checkout code
@@ -26,6 +28,6 @@ jobs:
 
       - name: Run dev server and Cypress tests
         run: |
-          npm run start:dev &  
-          npx wait-on http://localhost:3000   
-          npm run test        
+          npm run start:dev &
+          npx wait-on http://localhost:3000
+          npm run test
