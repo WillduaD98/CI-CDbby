@@ -141,3 +141,4 @@ You are required to submit BOTH of the following for review:
 ---
 
 © 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+* Worst challenge, so stupid to correct all the code (is the same that we did in the last one... + an extra, omg..)

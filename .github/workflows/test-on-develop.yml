@@ -1,13 +1,15 @@
 name: Run Cypress Tests on PR to Develop
 
 on:
-  pull_request:
+  push:
     branches:
       - develop
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
     steps:
       - name: Checkout code
@@ -21,5 +23,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cypress tests
-        run: npm run test
+      - name: Build project
+        run: npm run build
+
+      - name: Run dev server and Cypress tests
+        run: |
+          npm run start:dev &
+          npx wait-on http://localhost:3000
+          npm run test

@@ -3,6 +3,18 @@ dotenv.config();
 
 import mongoose from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/techquiz');
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  console.error('❌ MONGODB_URI is not defined. Add it to your .env or GitHub secrets.');
+  process.exit(1);
+}
+
+mongoose.connect(uri)
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch((err) => {
+    console.error('❌ MongoDB connection error:', err.message);
+    process.exit(1);
+  });
 
 export default mongoose.connection;
